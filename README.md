@@ -1,5 +1,5 @@
 # PQ Extended
-Extends the `pq.Array` method to implement types not officially supported by PostgreSQL. This is a drop-in replacement for `pq.Array`
+Extends parts of the `pq` module to implement types not officially supported by PostgreSQL. This is a drop-in replacement for `pq` in these instances
 
 # Why?
 The official Go driver for Postgres doesn't support slices of all types available in Go, such as `int8` and `int16`, and no unsigned ints at all. This results in the need for custom types which implement the `Scan` and `Value` interface to work properly. This module aims to be a drop-in replacement in these situations to add extended type support
