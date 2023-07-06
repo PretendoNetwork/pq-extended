@@ -25,7 +25,6 @@ func (a *UInt8Array) Scan(src interface{}) error {
 	return fmt.Errorf("PQ Extended: Cannot convert %T to UInt8Array", src)
 }
 
-// Value implements the driver.Valuer interface
 func (a *UInt8Array) scanBytes(src []byte) error {
 	str := string(src)
 	str = strings.TrimSuffix(str, "}")
@@ -49,6 +48,7 @@ func (a *UInt8Array) scanBytes(src []byte) error {
 	return nil
 }
 
+// Value implements the driver.Valuer interface
 func (a UInt8Array) Value() (driver.Value, error) {
 	if a == nil {
 		return nil, nil
