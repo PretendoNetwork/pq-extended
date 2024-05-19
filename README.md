@@ -8,7 +8,12 @@ The official Go driver for Postgres doesn't support slices of all types availabl
 ## pqextended.Array
 `pqextended.Array` is a drop-in replacement for `pq.Array`. If a type is unknown, `pq.Array` is called internally. Currently supports:
 
+- `[]int8`
+- `[]int16`
 - `[]uint8`
+- `[]uint16`
+- `[]uint32`
+- `[]uint64`
 
 ```go
 postgres, err := sql.Open("postgres", os.Getenv("POSTGRES_URI"))

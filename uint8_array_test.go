@@ -20,13 +20,13 @@ func TestUInt8Array(t *testing.T) {
 
 	_, err = postgres.Exec(`CREATE TABLE IF NOT EXISTS uint8_slices (
 		id integer,
-		uint8_slice integer[]
+		uint8_slice smallint[]
 	)`)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	input := []uint8{0, 1, 2, 3}
+	input := []uint8{0, 1, 2, 255}
 
 	_, err = postgres.Exec(`INSERT INTO uint8_slices (id, uint8_slice) VALUES ($1, $2) ON CONFLICT DO NOTHING`, 1, Array(input))
 	if err != nil {
@@ -44,6 +44,6 @@ func TestUInt8Array(t *testing.T) {
 		t.Fatalf("Input and output did not match. Expected %v, got %v.", input, output)
 	}
 
-	fmt.Printf("Input: %v\n", input)
-	fmt.Printf("Output: %v\n", output)
+	fmt.Printf("Input []uint8: %v\n", input)
+	fmt.Printf("Output []uint8: %v\n", output)
 }
