@@ -24,7 +24,6 @@ func Array(a interface{}) interface {
 		return (*Int16Array)(&a)
 	case *[]int16:
 		return (*Int16Array)(a)
-
 	case []uint8:
 		return (*UInt8Array)(&a)
 	case *[]uint8:
