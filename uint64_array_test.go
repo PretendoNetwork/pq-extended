@@ -20,13 +20,13 @@ func TestUInt64Array(t *testing.T) {
 
 	_, err = postgres.Exec(`CREATE TABLE IF NOT EXISTS uint64_slices (
 		id integer,
-		uint64_slice bigint[]
+		uint64_slice numeric(20)[]
 	)`)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	input := []uint64{0, 1, 2, 4294967295} // Postgres doesn't have a bigger type to support the whole uint64 range
+	input := []uint64{0, 1, 2, 18446744073709551615}
 
 	_, err = postgres.Exec(`INSERT INTO uint64_slices (id, uint64_slice) VALUES ($1, $2) ON CONFLICT DO NOTHING`, 1, Array(input))
 	if err != nil {
