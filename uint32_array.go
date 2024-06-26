@@ -29,6 +29,12 @@ func (a *UInt32Array) scanBytes(src []byte) error {
 	str := string(src)
 	str = strings.TrimSuffix(str, "}")
 	str = strings.TrimPrefix(str, "{")
+
+	if str == "" {
+		*a = make([]uint32, 0)
+		return nil
+	}
+
 	strSlice := strings.Split(str, ",")
 
 	b := make([]uint32, 0, len(strSlice))

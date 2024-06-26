@@ -29,6 +29,12 @@ func (a *Int8Array) scanBytes(src []byte) error {
 	str := string(src)
 	str = strings.TrimSuffix(str, "}")
 	str = strings.TrimPrefix(str, "{")
+
+	if str == "" {
+		*a = make([]int8, 0)
+		return nil
+	}
+
 	strSlice := strings.Split(str, ",")
 
 	b := make([]int8, 0, len(strSlice))
